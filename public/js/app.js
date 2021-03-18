@@ -1989,9 +1989,9 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     console.log('Component mounted.');
-    axios.get('api/message').then(function (response) {
-      console.log(response.data.response);
-      _this.messages = response.data.response; //console.log(this.messages);
+    axios.get('api/messages').then(function (response) {
+      console.log(response.data.data);
+      _this.messages = response.data.data; //console.log(this.messages);
 
       var bdcs = _this.messages[0].created_at; //console.log(bdcs.slice(0, 7));
       //console.log(bdcs);
@@ -2012,7 +2012,7 @@ __webpack_require__.r(__webpack_exports__);
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
         datasets: [{
           label: 'Messaggi ricevuti',
-          data: [34, 19, 3, 5, 2, 3],
+          data: [34, 0, 3, 5, 2, 3],
           backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'],
           borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'],
           borderWidth: 4

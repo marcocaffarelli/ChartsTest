@@ -31,9 +31,9 @@
         },
         mounted() {
             console.log('Component mounted.')
-            axios.get('api/message').then(response => {
-                console.log(response.data.response);
-                this.messages = response.data.response;
+            axios.get('api/messages').then(response => {
+                console.log(response.data.data);
+                this.messages = response.data.data;
                 //console.log(this.messages);
                 let bdcs = this.messages[0].created_at;
                 //console.log(bdcs.slice(0, 7));
@@ -54,7 +54,8 @@
                     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
                     datasets: [{
                         label: 'Messaggi ricevuti',
-                        data: [34, 19, 3, 5, 2, 3],
+
+                        data: [34, 0, 3, 5, 2, 3],
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
                             'rgba(54, 162, 235, 0.2)',

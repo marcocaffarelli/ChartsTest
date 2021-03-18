@@ -19,9 +19,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::get('message', function (){
-    return response()->json([
-        'success' => true,
-        'response' => App\Message::all()
-    ], 200);
-});
+// Route::get('message', function (){
+//     return response()->json([
+//         'success' => true,
+//         'response' => App\Message::all()
+//     ], 200);
+// });
+
+Route::get('messages', 'API\MessageController@index');
