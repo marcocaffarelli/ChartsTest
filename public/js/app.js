@@ -1963,26 +1963,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       messages: "",
-      // messagese:[32, 3, 6,7],
-      prova: []
+      gennaio: [],
+      febbraio: [],
+      marzo: [],
+      aprile: [],
+      maggio: [],
+      giugno: [],
+      luglio: [],
+      agosto: [],
+      settembre: [],
+      ottobre: [],
+      novembre: [],
+      dicembre: []
     };
   },
   mounted: function mounted() {
@@ -1990,31 +1986,55 @@ __webpack_require__.r(__webpack_exports__);
 
     console.log('Component mounted.');
     axios.get('api/messages').then(function (response) {
-      console.log(response.data.data);
-      _this.messages = response.data.data; //console.log(this.messages);
+      //console.log(response.data.data);
+      _this.messages = response.data.data; //console.log(this.messages)
 
-      var bdcs = _this.messages[0].created_at; //console.log(bdcs.slice(0, 7));
-      //console.log(bdcs);
-      // this.messages.forEach(element => {
-      //     let abcd = element.created_at;
-      //     abcd.slice(0, 4);
-      //     this.prova.push(abcd);
-      // });
+      _this.messages.forEach(function (element) {
+        var abcd = element.created_at; // var prova=[];
 
-      console.log(_this.prova);
+        if (abcd == 'Jan-2021') {
+          _this.gennaio.push(abcd);
+        } else if (abcd == 'Feb-2021') {
+          _this.febbraio.push(abcd);
+        } else if (abcd == 'Mar-2021') {
+          _this.marzo.push(abcd);
+        } else if (abcd == 'Apr-2021') {
+          _this.aprile.push(abcd);
+        } else if (abcd == 'May-2021') {
+          _this.maggio.push(abcd);
+        } else if (abcd == 'Jun-2021') {
+          _this.giugno.push(abcd);
+        } else if (abcd == 'Jul-2021') {
+          _this.luglio.push(abcd);
+        } else if (abcd == 'Aug-2021') {
+          _this.agosto.push(abcd);
+        } else if (abcd == 'Sep-2021') {
+          _this.settembre.push(abcd);
+        } else if (abcd == 'Oct-2021') {
+          _this.ottobre.push(abcd);
+        } else if (abcd == 'Nov-2021') {
+          _this.novembre.push(abcd);
+        } else if (abcd == 'Dec-2021') {
+          _this.dicembre.push(abcd);
+        } //console.log(abcd);
+
+      });
     })["catch"](function (error) {
       console.log(error);
     });
+    console.log(this.marzo);
+  },
+  updated: function updated() {
     var ctx = document.getElementById('myChart');
     var myChart = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        labels: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'],
         datasets: [{
           label: 'Messaggi ricevuti',
-          data: [34, 0, 3, 5, 2, 3],
-          backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'],
-          borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'],
+          data: [this.gennaio.length, this.febbraio.length, this.marzo.length, this.aprile.length, this.maggio.length, this.giugno.length, this.luglio.length, this.agosto.length, this.settembre.length, this.ottobre.length, this.novembre.length, this.dicembre.length],
+          backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)', 'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'],
+          borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)', 'rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'],
           borderWidth: 4
         }]
       },
@@ -2029,7 +2049,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     }); //             let self = this;
     //             function ciao(){
-    //             chart.data.datasets[0].data = self.messagese;
+    //             chart.data.datasets[0].data = self.messages;
     //             chart.update();
     //             }
     //             ciao();
@@ -37733,44 +37753,11 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c(
-        "div",
-        { staticClass: "col-md-8" },
-        _vm._l(_vm.messages, function(message, index) {
-          return _c("div", { staticClass: "card" }, [
-            _c("div", [
-              _vm._v(
-                "\n                        " +
-                  _vm._s(message.nome_paziente) +
-                  "\n                    "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _vm._v(
-                "\n                        " +
-                  _vm._s(message.created_at) +
-                  "\n                    "
-              )
-            ])
-          ])
-        }),
-        0
-      )
-    ]),
-    _vm._v(" "),
-    _vm._m(0)
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c(
+  return _c(
+    "div",
+    { staticClass: "container" },
+    _vm._l(_vm.messages, function(message, index) {
+      return _c(
         "div",
         {
           staticStyle: {
@@ -37785,9 +37772,11 @@ var staticRenderFns = [
           })
         ]
       )
-    ])
-  }
-]
+    }),
+    0
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
