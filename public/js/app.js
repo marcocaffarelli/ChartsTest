@@ -1963,6 +1963,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1978,7 +1981,12 @@ __webpack_require__.r(__webpack_exports__);
       settembre: [],
       ottobre: [],
       novembre: [],
-      dicembre: []
+      dicembre: [],
+      primoAnno: [],
+      secondoAnno: [],
+      terzoAnno: [],
+      quartoAnno: [],
+      quintoAnno: []
     };
   },
   mounted: function mounted() {
@@ -1992,37 +2000,80 @@ __webpack_require__.r(__webpack_exports__);
       _this.messages.forEach(function (element) {
         var abcd = element.created_at; // var prova=[];
 
-        if (abcd == 'Jan-2021') {
-          _this.gennaio.push(abcd);
-        } else if (abcd == 'Feb-2021') {
-          _this.febbraio.push(abcd);
-        } else if (abcd == 'Mar-2021') {
-          _this.marzo.push(abcd);
-        } else if (abcd == 'Apr-2021') {
-          _this.aprile.push(abcd);
-        } else if (abcd == 'May-2021') {
-          _this.maggio.push(abcd);
-        } else if (abcd == 'Jun-2021') {
-          _this.giugno.push(abcd);
-        } else if (abcd == 'Jul-2021') {
-          _this.luglio.push(abcd);
-        } else if (abcd == 'Aug-2021') {
-          _this.agosto.push(abcd);
-        } else if (abcd == 'Sep-2021') {
-          _this.settembre.push(abcd);
-        } else if (abcd == 'Oct-2021') {
-          _this.ottobre.push(abcd);
-        } else if (abcd == 'Nov-2021') {
-          _this.novembre.push(abcd);
-        } else if (abcd == 'Dec-2021') {
-          _this.dicembre.push(abcd);
+        var d1 = new Date('2021-01-01');
+        var d2 = new Date('2021-05-23'); // var same = d1.getFullYear() === d2.getFullYear();
+        // var notSame = d1.getFullYear() !== d2.getFullYear();
+
+        var incremento = 0; // console.log('d1 < d2', d1 < d2); // false
+        // console.log('d1 > d2', d1 > d2); // false
+        // console.log('d1 === d2', d1 === d2); // false, oops!
+
+        var tody = 'DEC 31 2021 23:59:59';
+        var today = new Date();
+        var prova = new Date('December 25, 2023 23:15:00'); //console.log(prova.getFullYear());
+        //console.log(today);
+
+        while (today.getFullYear() == d1.getFullYear() + incremento) {
+          if (today != 'DEC 31' + today.getFullYear() + '23:59:59') {
+            if (abcd == 'Jan-' + today.getFullYear()) {
+              _this.gennaio.push(abcd);
+            } else if (abcd == 'Feb-' + today.getFullYear()) {
+              _this.febbraio.push(abcd);
+            } else if (abcd == 'Mar-' + today.getFullYear()) {
+              _this.marzo.push(abcd);
+            } else if (abcd == 'Apr-' + today.getFullYear()) {
+              _this.aprile.push(abcd);
+            } else if (abcd == 'May-' + today.getFullYear()) {
+              _this.maggio.push(abcd);
+            } else if (abcd == 'Jun-' + today.getFullYear()) {
+              _this.giugno.push(abcd);
+            } else if (abcd == 'Jul-' + today.getFullYear()) {
+              _this.luglio.push(abcd);
+            } else if (abcd == 'Aug-' + today.getFullYear()) {
+              _this.agosto.push(abcd);
+            } else if (abcd == 'Sep-' + today.getFullYear()) {
+              _this.settembre.push(abcd);
+            } else if (abcd == 'Oct-' + today.getFullYear()) {
+              _this.ottobre.push(abcd);
+            } else if (abcd == 'Nov-' + today.getFullYear()) {
+              _this.novembre.push(abcd);
+            } else if (abcd == 'Dec-' + today.getFullYear()) {
+              _this.dicembre.push(abcd);
+            }
+          } else if (today == 'DEC 31 2021 23:59:59') {
+            _this.gennaio = [];
+            _this.febbraio = [];
+            _this.marzo = [];
+            _this.aprile = [];
+            _this.maggio = [];
+            _this.giugno = [];
+            _this.luglio = [];
+            _this.agosto = [];
+            _this.settembre = [];
+            _this.ottobre = [];
+            _this.novembre = [];
+            _this.dicembre = [];
+          }
+
+          if (abcd.includes(2021)) {
+            _this.primoAnno.push(abcd);
+          } else if (abcd.includes(2022)) {
+            _this.secondoAnno.push(abcd);
+          } else if (abcd.includes(2023)) {
+            _this.terzoAnno.push(abcd);
+          } else if (abcd.includes(2024)) {
+            _this.quartoAnno.push(abcd);
+          } else if (abcd.includes(2025)) {
+            _this.quintoAnno.push(abcd);
+          }
+
+          incremento++;
         } //console.log(abcd);
 
       });
     })["catch"](function (error) {
       console.log(error);
-    });
-    console.log(this.marzo);
+    }); //console.log(this.marzo);
   },
   updated: function updated() {
     var ctx = document.getElementById('myChart');
@@ -2031,8 +2082,31 @@ __webpack_require__.r(__webpack_exports__);
       data: {
         labels: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'],
         datasets: [{
-          label: 'Messaggi ricevuti',
+          label: 'Messaggi ricevuti per mese',
           data: [this.gennaio.length, this.febbraio.length, this.marzo.length, this.aprile.length, this.maggio.length, this.giugno.length, this.luglio.length, this.agosto.length, this.settembre.length, this.ottobre.length, this.novembre.length, this.dicembre.length],
+          backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)', 'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'],
+          borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)', 'rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'],
+          borderWidth: 4
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+    var ctx = document.getElementById('myChart2');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: [2021, 2022, 2023, 2024, 2025],
+        datasets: [{
+          label: 'Messaggi ricevuti per anno',
+          data: [this.primoAnno.length, this.secondoAnno.length, this.terzoAnno.length, this.quartoAnno.length, this.quintoAnno.length],
           backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)', 'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'],
           borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)', 'rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'],
           borderWidth: 4
@@ -37753,28 +37827,43 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container" },
-    _vm._l(_vm.messages, function(message, index) {
-      return _c(
-        "div",
-        {
-          staticStyle: {
-            width: "400px",
-            height: "400px",
-            display: "inline-block"
-          }
-        },
-        [
-          _c("canvas", {
-            attrs: { id: "myChart", width: "400", height: "400" }
-          })
-        ]
-      )
-    }),
-    0
-  )
+  return _c("div", { staticClass: "container" }, [
+    _vm.messages
+      ? _c(
+          "div",
+          {
+            staticStyle: {
+              width: "400px",
+              height: "400px",
+              display: "inline-block"
+            }
+          },
+          [
+            _c("canvas", {
+              attrs: { id: "myChart", width: "400", height: "400" }
+            })
+          ]
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.messages
+      ? _c(
+          "div",
+          {
+            staticStyle: {
+              width: "400px",
+              height: "400px",
+              display: "inline-block"
+            }
+          },
+          [
+            _c("canvas", {
+              attrs: { id: "myChart2", width: "400", height: "400" }
+            })
+          ]
+        )
+      : _vm._e()
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
